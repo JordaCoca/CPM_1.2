@@ -15,7 +15,7 @@ mkdir -p $RESULTS_DIR
 
 echo "===== EJECUCIONES EN ORCA ====="
 
-for t in 2 4 8 16 32 64 128
+for t in 1
 do
     echo "Configuracion: $t threads"
     {
