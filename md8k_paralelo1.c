@@ -90,6 +90,7 @@ int main()
     /* ====== BUCLE 2 ====== */
     t0 = omp_get_wtime();
     //Matriu dispersa per matriu
+    #pragma omp parallel for private(k) // Paralelitzem el bucle interior, cada thread la seva propia k
     for(i=0;i<N;i++)
         for (k=0;k<ND;k++)
             C1[AD[k].i][i] += AD[k].v * B[AD[k].j][i];
@@ -157,6 +158,7 @@ int main()
 
     // Comprovacio MD x M -> M i MD x MD -> M
     /* ====== BUCLE 7 ====== */
+    #pragma omp parallel for private(j)
     t0 = omp_get_wtime();
     for (i=0;i<N;i++)
         for(j=0;j<N;j++)
@@ -168,6 +170,8 @@ int main()
     /* ====== BUCLE 8 ====== */
     t0 = omp_get_wtime();
     Suma = 0;
+
+    #pragma omp parallel for reduction(+:Suma)  // Usem reducció en suma per a calcular la suma total d CD[k].v (valor d la solució) d fomra paralela
     for(k=0;k<neleC;k++)
      {
         Suma += CD[k].v;
