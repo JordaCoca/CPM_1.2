@@ -7,16 +7,20 @@
 #define N 8000L
 #define ND N*N/100
 
+// Elementos de una matriz dispersa, i -> fila, j-> columna, v-> valor
+// Lo usamos porq en amtrices dispersas la mayoria d valores son 0 interesa guardar los no nulos
 typedef struct {
     int i,j,v;
 } tmd;
-
-int A[N][N],B[N][N],C[N][N],C1[N][N],C2[N][N];
-int jBD[N+1],VCcol[N],VBcol[N];
-tmd AD[ND],BD[ND],CD[N*N];
+// Matrices densas
+int A[N][N],B[N][N],C[N][N],C1[N][N],C2[N][N];  // A y B son las matrices originales, y C, C1 y C2 son resultados distintos de las multiplicaciones
+int jBD[N+1],VCcol[N],VBcol[N];                 // Vectores auxiliares, VBcol es un buffer auxiliar, VCcol acumula resultados d una columna de C, jBD es un indice para acceder rapido a columnas de B
+// Matrices dispersas, AD --> no nulos de A, BD --> no nulos d B , CD --> no nulos de C
+tmd AD[ND],BD[ND],CD[N*N];              
 
 long long Suma;
 
+// Metodos para ordenar las matrices dispersas para que la multiplicación sea eficiente
 int cmp_fil(const void *pa, const void *pb)
 {
 tmd * a = (tmd*)pa;
@@ -41,25 +45,34 @@ int main()
 {
     int i,j,k,neleC;
     
+    // Inicializamos los resultados --> bzero sirve para meter todo a 0
     bzero(C,sizeof(int)*(N*N));
     bzero(C1,sizeof(int)*(N*N));
     bzero(C2,sizeof(int)*(N*N));
-     
+    
+    // Paralelización --> Estos dos bucles ni los voy a tocar, ya que cuando toca generar con randoms se lia la logica y altera el funcionamiento
+    // Generamos la matriz dispersa A --> (AD +A)
     for(k=0;k<ND;k++)
     {
+        // Generamos posiciones y valores aleatorios
         AD[k].i=rand()%(N-1);
         AD[k].j=rand()%(N-1);
         AD[k].v=rand()%100+1;
+        // Evitamos los duplicados, si esa posición ya tiene valor buscamos otra
         while (A[AD[k].i][AD[k].j]) {
+            // Si i < j entonces cambiamos la fila, sino cambiamos columna
             if(AD[k].i < AD[k].j)
                 AD[k].i = (AD[k].i + 1)%N;
             else 
                 AD[k].j = (AD[k].j + 1)%N;
         }
+        // GUardamos en matriz densa, AD (la dispersa) y A (la densa)
         A[AD[k].i][AD[k].j] = AD[k].v;
     }
     qsort(AD,ND,sizeof(tmd),cmp_fil); // ordenat per files
 
+    // Generamos la matriz B, mismo proceso que A, excepto q ordenamos por columnas y no filas
+    // BD --> Matriz dispersa de B, B --> matriz densa
     for(k=0;k<ND;k++)
     {
         BD[k].i=rand()%(N-1);
@@ -77,46 +90,44 @@ int main()
     qsort(BD,ND,sizeof(tmd),cmp_col); // ordenat per columnes
     
     // calcul dels index de les columnes
+    // jBD[j] --> posicion donde empieza la columna j en BD, y jBD[j+1] es posicion dnd termina, sirve para tener un indice
+    // para acceder rapidamente a cada columna de B en formato disperso (BD)
     k=0;
     for (j=0; j<N+1; j++)
      {
       while (k < ND && j>BD[k].j) k++;
       jBD[j] = k;
      }
-
-    ////Matriu x matriu original (recorregut de C per columnes)
-    //for (i=0;i<N;i++)
-    //    for (j=0;j<N;j++)
-    //        for (k=0;k<N;k++)
-    //            C[j][i] += A[j][k] * B[k][i];
- 
-    //Matriu dispersa per matriu
+      
+    //=== C1 -> DISPERSA X DENSA ===
     for(i=0;i<N;i++)
         for (k=0;k<ND;k++)
-            C1[AD[k].i][i] += AD[k].v * B[AD[k].j][i];
+            C1[AD[k].i][i] += AD[k].v * B[AD[k].j][i];     
             
-    //Matriu dispersa per matriu dispersa
+    // === C2 -> DISPERSA X DISPERSA ==
+    // Limpiamos el buffer 
     for (j=0;j<N;j++)
-        VBcol[j] = 0;
+        VBcol[j] = 0;       
 
+    // 
     for(i=0;i<N;i++)
       {
-        // expandir Columna de B[*][i]
+        // expandir Columna de B[*][i] --> convertimos la clumna i de B en 1 vector
         for (k=jBD[i];k<jBD[i+1];k++)
                 VBcol[BD[k].i] = BD[k].v;
         // Calcul de tota una columna de C
         for (k=0;k<ND;k++)
             C2[AD[k].i][i] += AD[k].v * VBcol[AD[k].j];
-        // neteja vector de B[*][i]
+        // neteja vector de B[*][i] -> Reseteamos el buffer
         for (j=0;j<N;j++)
             VBcol[j] = 0;
       }
                 
-    //Matriu dispersa per matriu dispersa -> dona matriu Dispersa
-    neleC=0;
+    //=== CD -> DISPERSA X DISPERSA -> dona matriu Dispersa ===
+    neleC=0;                        // Contador elementos no nulos
     for (j=0;j<N;j++)
-        VBcol[j] = VCcol[j] = 0;
-
+        VBcol[j] = VCcol[j] = 0;    // Limpiamos los buffers
+    // bucle por columnas
     for(i=0;i<N;i++)
       {
         // expandir Columna de B[*][i]
