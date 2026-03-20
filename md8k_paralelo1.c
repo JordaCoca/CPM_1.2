@@ -3,6 +3,7 @@
 #include <time.h>
 #include <strings.h>
 #include <assert.h>
+#include <omp.h>
 
 #define N 8000L
 #define ND N*N/100
@@ -158,8 +159,8 @@ int main()
 
     // Comprovacio MD x M -> M i MD x MD -> M
     /* ====== BUCLE 7 ====== */
-    #pragma omp parallel for private(j)
     t0 = omp_get_wtime();
+    #pragma omp parallel for private(j)
     for (i=0;i<N;i++)
         for(j=0;j<N;j++)
             if (C2[i][j] != C1[i][j])

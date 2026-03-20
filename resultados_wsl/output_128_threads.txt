@@ -1,0 +1,11 @@
+Tiempo bucle1: 0.000312
+Tiempo bucle2: 2.870453
+Tiempo bucle3: 0.000019
+Tiempo bucle4: 6.278973
+Tiempo bucle5: 0.000020
+Tiempo bucle6: 5.466796
+Tiempo bucle7: 0.010585
+Tiempo bucle8: 0.035506
+
+Numero elements de la matriu dispersa C 35248895
+Suma dels elements de C 130625108751 
