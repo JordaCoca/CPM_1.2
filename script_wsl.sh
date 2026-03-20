@@ -27,7 +27,7 @@ do
     export OMP_PROC_BIND=true
     export OMP_PLACES=cores
 
-    time ./$BIN &> "$OUTDIR/output_${t}_threads.txt"
+    time ./$BIN > "$OUTDIR/output_${t}_threads.txt"
 done
 
 echo "Todas las ejecuciones completadas."

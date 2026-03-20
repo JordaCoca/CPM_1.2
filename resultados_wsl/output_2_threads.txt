@@ -1,0 +1,3 @@
+
+Numero elements de la matriu dispersa C 35248895
+Suma dels elements de C 130625108751 
