@@ -108,10 +108,9 @@ int main()
     // Limpiamos el buffer 
     for (j=0;j<N;j++)
         VBcol[j] = 0;       
-
-    // 
+        
     for(i=0;i<N;i++)
-      {
+    {
         // expandir Columna de B[*][i] --> convertimos la clumna i de B en 1 vector
         for (k=jBD[i];k<jBD[i+1];k++)
                 VBcol[BD[k].i] = BD[k].v;
@@ -121,7 +120,7 @@ int main()
         // neteja vector de B[*][i] -> Reseteamos el buffer
         for (j=0;j<N;j++)
             VBcol[j] = 0;
-      }
+    }
                 
     //=== CD -> DISPERSA X DISPERSA -> dona matriu Dispersa ===
     neleC=0;                        // Contador elementos no nulos
