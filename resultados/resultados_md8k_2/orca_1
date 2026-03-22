@@ -1,0 +1,29 @@
+Programa: paralelo1
+Maquina: orca
+Threads: 1
+Run: 
+----------------------
+Tiempo bucle1: 0.001620
+Tiempo bucle2: 60.029759
+Tiempo bucle3: 0.000005
+Tiempo bucle4: 19.479385
+Tiempo bucle5: 0.000005
+Tiempo bucle6: 12.056438
+Tiempo bucle7: 0.097429
+Tiempo bucle8: 0.159424
+Elementos C: 35248895
+Suma: 130625108751
+92.19user 0.30system 1:32.51elapsed 99%CPU (0avgtext+0avgdata 1688676maxresident)k
+8inputs+0outputs (3major+127490minor)pagefaults 0swaps
+Tiempo bucle1: 0.000503
+Tiempo bucle2: 60.153812
+Tiempo bucle3: 0.000005
+Tiempo bucle4: 19.503668
+Tiempo bucle5: 0.000006
+Tiempo bucle6: 12.060649
+Tiempo bucle7: 0.062987
+Tiempo bucle8: 0.138300
+Elementos C: 35248895
+Suma: 130625108751
+92.29user 0.27system 1:32.59elapsed 99%CPU (0avgtext+0avgdata 1690724maxresident)k
+40inputs+0outputs (4major+127270minor)pagefaults 0swaps

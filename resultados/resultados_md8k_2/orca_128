@@ -1,0 +1,19 @@
+Programa: paralelo1
+Maquina: orca
+Threads: 128
+Run: 
+----------------------
+srun: job 33783 queued and waiting for resources
+srun: job 33783 has been allocated resources
+Tiempo bucle1: 0.000275
+Tiempo bucle2: 0.580664
+Tiempo bucle3: 0.004691
+Tiempo bucle4: 0.223263
+Tiempo bucle5: 0.000093
+Tiempo bucle6: 0.483380
+Tiempo bucle7: 0.023406
+Tiempo bucle8: 0.091961
+Elementos C: 35248895
+Suma: 130625108751
+141.90user 0.27system 0:02.00elapsed 7091%CPU (0avgtext+0avgdata 1736068maxresident)k
+0inputs+0outputs (0major+128927minor)pagefaults 0swaps

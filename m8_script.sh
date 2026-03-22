@@ -1,8 +1,8 @@
 #!/bin/bash
 
-SRC="./md8k_paralelo1.c"
-RESULTS_DIR="./resultados_md8k"
-BIN="./md8k_pal1"
+SRC="./version2.c"
+RESULTS_DIR="./resultados_md8k_2"
+BIN="./md8k_pal2"
 
 echo "Compilando programa..."
 cc -O3 -fopenmp $SRC -o $BIN
@@ -15,7 +15,7 @@ mkdir -p $RESULTS_DIR
 
 echo "===== EJECUCIONES EN ORCA ====="
 
-for t in 1
+for t in 1 2 4 8 16 32 64 128
 do
     echo "Configuracion: $t threads"
     {
