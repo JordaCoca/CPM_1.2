@@ -1,0 +1,9 @@
+Programa: paralelo1
+Maquina: orca
+Threads: 128
+Run: 
+----------------------
+Command terminated by signal 11
+99.29user 0.26system 0:01.44elapsed 6904%CPU (0avgtext+0avgdata 1296392maxresident)k
+0inputs+0outputs (1major+131975minor)pagefaults 0swaps
+srun: error: orca13: task 0: Exited with exit code 139
