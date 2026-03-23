@@ -1,0 +1,10 @@
+
+Numero elements de la matriu dispersa C 35248895
+Suma dels elements de C 130625108751 
+91.71user 0.23system 1:31.99elapsed 99%CPU (0avgtext+0avgdata 1690144maxresident)k
+24inputs+0outputs (4major+126680minor)pagefaults 0swaps
+
+Numero elements de la matriu dispersa C 35248895
+Suma dels elements de C 130625108751 
+91.73user 0.28system 1:32.07elapsed 99%CPU (0avgtext+0avgdata 1688304maxresident)k
+16inputs+0outputs (3major+126856minor)pagefaults 0swaps

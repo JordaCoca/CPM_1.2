@@ -1,0 +1,12 @@
+srun: job 34053 queued and waiting for resources
+srun: job 34053 has been allocated resources
+
+Numero elements de la matriu dispersa C 35248895
+Suma dels elements de C 130625108751 
+
+Numero elements de la matriu dispersa C 35248895
+Suma dels elements de C 130625108751 
+30.73user 0.28system 0:31.02elapsed 99%CPU (0avgtext+0avgdata 1690276maxresident)k
+0inputs+0outputs (4major+127241minor)pagefaults 0swaps
+30.73user 0.28system 0:31.02elapsed 99%CPU (0avgtext+0avgdata 1688304maxresident)k
+40inputs+0outputs (1major+126983minor)pagefaults 0swaps
