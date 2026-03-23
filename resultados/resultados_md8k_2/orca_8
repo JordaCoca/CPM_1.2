@@ -3,17 +3,15 @@ Maquina: orca
 Threads: 8
 Run: 
 ----------------------
-srun: job 33775 queued and waiting for resources
-srun: job 33775 has been allocated resources
-Tiempo bucle1: 0.000295
-Tiempo bucle2: 7.189218
-Tiempo bucle3: 0.000004
-Tiempo bucle4: 2.081505
-Tiempo bucle5: 0.000007
-Tiempo bucle6: 1.528110
-Tiempo bucle7: 0.013596
-Tiempo bucle8: 0.107905
+Tiempo bucle1: 0.000283
+Tiempo bucle2: 7.038326
+Tiempo bucle3: 0.004641
+Tiempo bucle4: 2.129715
+Tiempo bucle5: 0.004640
+Tiempo bucle6: 1.520679
+Tiempo bucle7: 0.013559
+Tiempo bucle8: 0.107623
 Elementos C: 35248895
 Suma: 130625108751
-86.94user 0.23system 0:11.45elapsed 761%CPU (0avgtext+0avgdata 1689136maxresident)k
-0inputs+0outputs (0major+128199minor)pagefaults 0swaps
+85.56user 0.26system 0:11.35elapsed 755%CPU (0avgtext+0avgdata 1691192maxresident)k
+0inputs+0outputs (0major+127377minor)pagefaults 0swaps

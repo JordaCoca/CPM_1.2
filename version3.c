@@ -20,34 +20,35 @@ long long Suma;
 
 int cmp_fil(const void *pa, const void *pb)
 {
-    tmd * a = (tmd*)pa;
-    tmd * b = (tmd*)pb;
+tmd * a = (tmd*)pa;
+tmd * b = (tmd*)pb;
 
-    if (a->i > b->i) return(1);
-    else if (a->i < b->i) return (-1);
-    else return (a->j - b->j);
+  if (a->i > b->i) return(1);
+  else if (a->i < b->i) return (-1);
+  else return (a->j - b->j);
 }
 
 int cmp_col(const void *pa, const void *pb)
 {
-    tmd * a = (tmd*)pa;
-    tmd * b = (tmd*)pb;
+tmd * a = (tmd*)pa;
+tmd * b = (tmd*)pb;
 
-    if (a->j > b->j) return(1);
-    else if (a->j < b->j) return (-1);
-    else return (a->i - b->i);
+  if (a->j > b->j) return(1);
+  else if (a->j < b->j) return (-1);
+  else return (a->i - b->i);
 }
 
 int main()
 {
-    int i,j,k,neleC;
-    double t_b1=0, t_b2=0, t_b3=0, t_b4=0, t_b5=0, t_b6=0, t_b7=0, t_b8=0;
-
+    int i,j,k,neleC, index, value;
+    
     bzero(C,sizeof(int)*(N*N));
     bzero(C1,sizeof(int)*(N*N));
     bzero(C2,sizeof(int)*(N*N));
-
-    for(k=0;k<ND;k++)
+    double t_b1=0, t_b2=0, t_b3=0, t_b4=0, t_b5=0, t_b6=0, t_b7=0, t_b8=0;
+     
+    // No els paralelitzem perque hi ha generacio d'aleatoris
+   for(k=0;k<ND;k++)
     {
         AD[k].i=rand()%(N-1);
         AD[k].j=rand()%(N-1);
@@ -60,7 +61,7 @@ int main()
         }
         A[AD[k].i][AD[k].j] = AD[k].v;
     }
-    qsort(AD,ND,sizeof(tmd),cmp_fil);
+    qsort(AD,ND,sizeof(tmd),cmp_fil); // ordenat per files
 
     for(k=0;k<ND;k++)
     {
@@ -75,142 +76,118 @@ int main()
         }
         B[BD[k].i][BD[k].j] = BD[k].v;
     }
+    qsort(BD,ND,sizeof(tmd),cmp_col); // ordenat per columnes
 
-    qsort(BD,ND,sizeof(tmd),cmp_col);
-
+    
+    // calcul dels index de les columnes (seq)
     /* ====== BUCLE 1 ====== */
     double t0 = omp_get_wtime();
     k=0;
     for (j=0; j<N+1; j++)
-    {
+     {  
         while (k < ND && j>BD[k].j) k++;
         jBD[j] = k;
-    }
-    t_b1 += omp_get_wtime() - t0;
+     }
 
+    t_b1 += omp_get_wtime() - t0;
     /* ====== BUCLE 2 ====== */
     t0 = omp_get_wtime();
-    #pragma omp parallel
-    {
-        #pragma omp for schedule(guided) private(k)
-        for(i=0;i<N;i++)
-            for (k=0;k<ND;k++)
-                C1[AD[k].i][i] += AD[k].v * B[AD[k].j][i];
-    }
-    t_b2 += omp_get_wtime() - t0;
+    //Matriu dispersa per matriu
+#pragma omp parallel for private(k)
+    for(i=0;i<N;i++)
+        for (k=0;k<ND;k++)
+            C1[AD[k].i][i] += AD[k].v * B[AD[k].j][i];
+            
+t_b2 += omp_get_wtime() - t0;
 
     /* ====== BUCLE 3 ====== */
     t0 = omp_get_wtime();
-    #pragma omp parallel
-    {
-        #pragma omp for
-        for (j=0;j<N;j++)
-            VBcol[j] = 0;
+    //Matriu dispersa per matriu -> dona matriu Dispersa
+#pragma omp threadprivate(VBcol)
+#pragma omp parallel for
+    for (j=0;j<N;j++){
+        VBcol[j] = 0;
     }
     t_b3 += omp_get_wtime() - t0;
 
-    /* ====== BUCLE 4  este ====== */
+    /* ====== BUCLE 4   ====== */
     t0 = omp_get_wtime();
-    #pragma omp parallel
+#pragma omp parallel for copyin(VBcol)
+    for(i=0;i<N;i++)
     {
-        int VBcol_local[N];
-        for (j=0;j<N;j++) VBcol_local[j] = 0;
-
-        #pragma omp for schedule(dynamic)
-        for(i=0;i<N;i++)
-        {
-            for (k=jBD[i];k<jBD[i+1];k++)
-                VBcol_local[BD[k].i] = BD[k].v;
-
-            for (k=0;k<ND;k++)
-                C2[AD[k].i][i] += AD[k].v * VBcol_local[AD[k].j];
-
-            for (j = 0; j < N; j++)
-                VBcol_local[j] = 0;
-        }
+        // expandir Columna de B[*][i]
+        for (k=jBD[i];k<jBD[i+1];k++)
+            VBcol[BD[k].i] = BD[k].v;
+        // Calcul de tota una columna de C
+        for (k=0;k<ND;k++)
+            C2[AD[k].i][i] += AD[k].v * VBcol[AD[k].j];
+        for (j = 0; j < N; j++)
+            VBcol[j] = 0;
     }
     t_b4 += omp_get_wtime() - t0;
 
+    //Matriu dispersa per matriu dispersa -> dona matriu Dispersa
+    neleC=0;
+
     /* ====== BUCLE 5 ====== */
     t0 = omp_get_wtime();
-    #pragma omp parallel
-    {
-        #pragma omp for
-        for (j=0;j<N;j++){
-            VBcol[j] = 0;
-            VCcol[j] = 0;
-        }
-    }
+#pragma omp threadprivate(VCcol)
+#pragma omp parallel for
+    for (j=0;j<N;j++)
+        VBcol[j] = VCcol[j] = 0;
     t_b5 += omp_get_wtime() - t0;
 
-    /* ====== BUCLE 6 est ====== */
+    /* ====== BUCLE 6 ====== */
     t0 = omp_get_wtime();
-    neleC = 0;
-    #pragma omp parallel
-    {
-        int VBcol_local[N];
-        int VCcol_local[N];
-        int local_count = 0;
-        tmd local_CD[N];  // buffer local (simplificación)
-
-        for (j=0;j<N;j++){
-            VBcol_local[j] = 0;
-            VCcol_local[j] = 0;
-        }
-
-        #pragma omp for schedule(dynamic)
-        for(i=0;i<N;i++)
-        {
-            for (k=jBD[i];k<jBD[i+1];k++)
-                VBcol_local[BD[k].i] = BD[k].v;
-
-            for (k=0;k<ND;k++)
-                VCcol_local[AD[k].i] += AD[k].v * VBcol_local[AD[k].j];
-
-            for (j = 0; j < N; j++)
-            {
-                VBcol_local[j] = 0;
-
-                if (VCcol_local[j]) {
-                    local_CD[local_count].i = j;
-                    local_CD[local_count].j = i;
-                    local_CD[local_count].v = VCcol_local[j];
-                    VCcol_local[j] = 0;
-                    local_count++;
-                }
-            }
-        }
-
-        // combinar resultados
+#pragma omp parallel for private(k, j) copyin(VCcol)
+    for(i=0;i<N;i++)
+      {
+        // expandir Columna de B[*][i]
+        for (k=jBD[i];k<jBD[i+1];k++)
+                VBcol[BD[k].i] = BD[k].v;
+        // Calcul de tota una columna de C
+        for (k=0;k<ND;k++)
+            VCcol[AD[k].i] += AD[k].v * VBcol[AD[k].j];
+        
         #pragma omp critical
+        for (j = 0; j < N; j++)
         {
-            for(int x=0;x<local_count;x++){
-                CD[neleC++] = local_CD[x];
+            // neteja vector de B[*][i]
+            VBcol[j] = 0;
+            // Compressió de C
+            if (VCcol[j]) {
+                CD[neleC].i = j;
+                    CD[neleC].j = i;
+                    CD[neleC].v = VCcol[j];
+                    VCcol[j] = 0;
+                    neleC++;
             }
         }
-    }
-    t_b6 += omp_get_wtime() - t0;
+      }
+      t_b6 += omp_get_wtime() - t0;
 
-    /* ====== BUCLE 7 ====== */
+    
+    /* ====== Bucle 7 ====== */
+    // Comprovacio MD x M -> M i MD x MD -> M
     t0 = omp_get_wtime();
-    #pragma omp parallel for private(j)
+#pragma omp parallel for private(j)
     for (i=0;i<N;i++)
         for(j=0;j<N;j++)
             if (C2[i][j] != C1[i][j])
-                printf("Diferencias C1 y C2 %d,%d\n",i,j);
+                printf("Diferencies C1 i C2 pos %d,%d: %d != %d\n",i,j,C1[i][j],C2[i][j]);
+    // Comprovacio MD X MD -> M i MD x MD -> MD
+    Suma = 0;
     t_b7 += omp_get_wtime() - t0;
 
-    /* ====== BUCLE 8 ====== */
+    /* ====== Bucle 8 ====== */
     t0 = omp_get_wtime();
-    Suma = 0;
-
     #pragma omp parallel for reduction(+:Suma)
     for(k=0;k<neleC;k++)
-    {
+     {
         Suma += CD[k].v;
         if (CD[k].v != C1[CD[k].i][CD[k].j])
-            printf("Error en CD\n");
-    }
+            printf("Diferencies C1 i CD a i:%d,j:%d,v%d, k:%d, vd:%d\n",CD[k].i,CD[k].j,C1[CD[k].i][CD[k].j],k,CD[k].v);
+     }
     t_b8 += omp_get_wtime() - t0;
 
     printf("Tiempo bucle1: %f\n", t_b1);
@@ -223,6 +200,5 @@ int main()
     printf("Tiempo bucle8: %f\n", t_b8);
     printf("Elementos C: %d\n", neleC);
     printf("Suma: %lld\n", Suma);
-
-    return 0;
+    exit(0);
 }

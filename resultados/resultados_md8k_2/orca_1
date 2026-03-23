@@ -3,27 +3,27 @@ Maquina: orca
 Threads: 1
 Run: 
 ----------------------
-Tiempo bucle1: 0.001620
-Tiempo bucle2: 60.029759
+Tiempo bucle1: 0.000510
+Tiempo bucle2: 59.650745
 Tiempo bucle3: 0.000005
-Tiempo bucle4: 19.479385
+Tiempo bucle4: 19.496064
+Tiempo bucle5: 0.000004
+Tiempo bucle6: 12.035209
+Tiempo bucle7: 0.097312
+Tiempo bucle8: 0.159260
+Elementos C: 35248895
+Suma: 130625108751
+91.83user 0.28system 1:32.11elapsed 99%CPU (0avgtext+0avgdata 1688644maxresident)k
+8inputs+0outputs (2major+126824minor)pagefaults 0swaps
+Tiempo bucle1: 0.002105
+Tiempo bucle2: 59.771598
+Tiempo bucle3: 0.000005
+Tiempo bucle4: 19.516076
 Tiempo bucle5: 0.000005
-Tiempo bucle6: 12.056438
-Tiempo bucle7: 0.097429
-Tiempo bucle8: 0.159424
+Tiempo bucle6: 12.038581
+Tiempo bucle7: 0.062688
+Tiempo bucle8: 0.132616
 Elementos C: 35248895
 Suma: 130625108751
-92.19user 0.30system 1:32.51elapsed 99%CPU (0avgtext+0avgdata 1688676maxresident)k
-8inputs+0outputs (3major+127490minor)pagefaults 0swaps
-Tiempo bucle1: 0.000503
-Tiempo bucle2: 60.153812
-Tiempo bucle3: 0.000005
-Tiempo bucle4: 19.503668
-Tiempo bucle5: 0.000006
-Tiempo bucle6: 12.060649
-Tiempo bucle7: 0.062987
-Tiempo bucle8: 0.138300
-Elementos C: 35248895
-Suma: 130625108751
-92.29user 0.27system 1:32.59elapsed 99%CPU (0avgtext+0avgdata 1690724maxresident)k
-40inputs+0outputs (4major+127270minor)pagefaults 0swaps
+91.91user 0.25system 1:32.19elapsed 99%CPU (0avgtext+0avgdata 1690724maxresident)k
+40inputs+0outputs (3major+126743minor)pagefaults 0swaps

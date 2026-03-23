@@ -14,7 +14,6 @@ fi
 mkdir -p $RESULTS_DIR
 
 echo "===== EJECUCIONES EN ORCA SECUENCIAL ====="
-export OMP_NUM_THREADS=1
-srun -p orca time $BIN &> $RESULTS_DIR/SECUENCIAL
+srun -p orca -c 1 time $BIN &> $RESULTS_DIR/SECUENCIAL
 
 echo "Ejecucion completa"
