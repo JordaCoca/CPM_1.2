@@ -15,6 +15,6 @@ mkdir -p $RESULTS_DIR
 
 echo "===== EJECUCIONES EN ORCA SECUENCIAL ====="
 srun -p orca -c 1 time $BIN &> $RESULTS_DIR/SECUENCIAL_ORCA
-srun -p teen -c 1 time $BIN &> $RESULTS_DIR/SECUENCIAL_ORCA
+srun -p teen -c 1 time $BIN &> $RESULTS_DIR/SECUENCIAL_TEEN
 
 echo "Ejecucion completa"
