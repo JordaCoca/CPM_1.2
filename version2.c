@@ -103,8 +103,6 @@ int main()
     /* ====== BUCLE 3 ====== */
     t0 = omp_get_wtime();
     //Matriu dispersa per matriu -> dona matriu Dispersa
-    #pragma omp threadprivate(VBcol)
-    #pragma omp parallel for
     for (j=0;j<N;j++){
         VBcol[j] = 0;
     }
@@ -131,8 +129,6 @@ int main()
     neleC=0;
     /* ====== BUCLE 5 ====== */
     t0 = omp_get_wtime();
-    #pragma omp threadprivate(VCcol)
-    #pragma omp parallel for
     for (j=0;j<N;j++)
         VBcol[j] = VCcol[j] = 0;
     t_b5 += omp_get_wtime() - t0;
