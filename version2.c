@@ -93,18 +93,18 @@ int main()
     /* ====== BUCLE 2 ====== */
     t0 = omp_get_wtime();
     //Matriu dispersa per matriu
-#pragma omp parallel for private(k)
+    #pragma omp parallel for private(k)
     for(i=0;i<N;i++)
         for (k=0;k<ND;k++)
             C1[AD[k].i][i] += AD[k].v * B[AD[k].j][i];
             
-t_b2 += omp_get_wtime() - t0;
+    t_b2 += omp_get_wtime() - t0;
 
     /* ====== BUCLE 3 ====== */
     t0 = omp_get_wtime();
     //Matriu dispersa per matriu -> dona matriu Dispersa
-#pragma omp threadprivate(VBcol)
-#pragma omp parallel for
+    #pragma omp threadprivate(VBcol)
+    #pragma omp parallel for
     for (j=0;j<N;j++){
         VBcol[j] = 0;
     }
@@ -112,7 +112,7 @@ t_b2 += omp_get_wtime() - t0;
 
     /* ====== BUCLE 4   ====== */
     t0 = omp_get_wtime();
-#pragma omp parallel for copyin(VBcol)
+    #pragma omp parallel for copyin(VBcol)
     for(i=0;i<N;i++)
     {
         // expandir Columna de B[*][i]
@@ -127,19 +127,19 @@ t_b2 += omp_get_wtime() - t0;
     t_b4 += omp_get_wtime() - t0;
 
     //Matriu dispersa per matriu dispersa -> dona matriu Dispersa
+    
     neleC=0;
-
     /* ====== BUCLE 5 ====== */
     t0 = omp_get_wtime();
-#pragma omp threadprivate(VCcol)
-#pragma omp parallel for
+    #pragma omp threadprivate(VCcol)
+    #pragma omp parallel for
     for (j=0;j<N;j++)
         VBcol[j] = VCcol[j] = 0;
     t_b5 += omp_get_wtime() - t0;
 
     /* ====== BUCLE 6 ====== */
     t0 = omp_get_wtime();
-#pragma omp parallel for private(k, j) copyin(VCcol)
+    #pragma omp parallel for private(k, j) copyin(VCcol)
     for(i=0;i<N;i++)
       {
         // expandir Columna de B[*][i]
@@ -170,7 +170,7 @@ t_b2 += omp_get_wtime() - t0;
     /* ====== Bucle 7 ====== */
     // Comprovacio MD x M -> M i MD x MD -> M
     t0 = omp_get_wtime();
-#pragma omp parallel for private(j)
+    #pragma omp parallel for private(j)
     for (i=0;i<N;i++)
         for(j=0;j<N;j++)
             if (C2[i][j] != C1[i][j])
