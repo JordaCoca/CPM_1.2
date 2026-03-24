@@ -130,14 +130,14 @@ int main()
     neleC=0;
     /* ====== BUCLE 5 ====== */
     t0 = omp_get_wtime();
-    #pragma omp threadprivate(VCcol)
+    #pragma omp threadprivate(VCcol, VBcol)
     for (j=0;j<N;j++)
         VBcol[j] = VCcol[j] = 0;
     t_b5 += omp_get_wtime() - t0;
 
     /* ====== BUCLE 6 ====== */
     t0 = omp_get_wtime();
-    #pragma omp parallel for private(k, j) copyin(VCcol)
+    #pragma omp parallel for private(k, j) copyin(VCcol, VBcol)
     for(i=0;i<N;i++)
       {
         // expandir Columna de B[*][i]
