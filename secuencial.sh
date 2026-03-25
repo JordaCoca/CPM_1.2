@@ -1,8 +1,8 @@
 #!/bin/bash
 
-SRC="./mD8K_comentado.c"
+SRC="./mD8K.c"
 RESULTS_DIR="./resultados_secuenciales"
-BIN="./md8k_pal2"
+BIN="./md8k_secuencial"
 
 echo "Compilando programa..."
 cc -O3 -fopenmp $SRC -o $BIN
