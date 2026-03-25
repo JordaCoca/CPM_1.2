@@ -1,0 +1,17 @@
+Programa: paralelo1
+Maquina: orca
+Threads: 2
+Run: 
+----------------------
+Tiempo bucle1: 0.000286
+Tiempo bucle2: 27.187720
+Tiempo bucle3: 0.000002
+Tiempo bucle4: 7.731611
+Tiempo bucle5: 0.000002
+Tiempo bucle6: 6.006115
+Tiempo bucle7: 0.030464
+Tiempo bucle8: 0.086881
+Elementos C: 35248895
+Suma: 130625108751
+82.35user 0.21system 0:41.59elapsed 198%CPU (0avgtext+0avgdata 1690808maxresident)k
+0inputs+0outputs (0major+127272minor)pagefaults 0swaps

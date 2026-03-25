@@ -1,0 +1,17 @@
+Programa: paralelo1
+Maquina: teen
+Threads: 16
+Run: 
+----------------------
+Tiempo bucle1: 0.000164
+Tiempo bucle2: 1.232549
+Tiempo bucle3: 0.000001
+Tiempo bucle4: 0.428651
+Tiempo bucle5: 0.000001
+Tiempo bucle6: 0.352269
+Tiempo bucle7: 0.009550
+Tiempo bucle8: 0.053213
+Elementos C: 35248895
+Suma: 130625108751
+33.38user 0.19system 0:02.47elapsed 1356%CPU (0avgtext+0avgdata 1689780maxresident)k
+0inputs+0outputs (0major+127625minor)pagefaults 0swaps
