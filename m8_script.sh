@@ -26,7 +26,7 @@ do
         echo "----------------------"
 
         export OMP_NUM_THREADS=$t
-        srun -p orca -c $t time $BIN
+        srun -p orca time $BIN
     } &> $RESULTS_DIR/orca_${t}
 done
 
@@ -44,7 +44,7 @@ do
         echo "----------------------"
 
         export OMP_NUM_THREADS=$t
-        srun -p teen -c $t time $BIN
+        srun -p teen time $BIN
     } &> $RESULTS_DIR/teen_${t}
 done
 
