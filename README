@@ -1,0 +1,15 @@
+Estructura del projecte:
+-documentación: Carpeta donde se encuentran los elementos usados para realizar el documento pdf de la práctica
+-scripts: Carpeta que incluye los scripts en bash que se han de ejecutar en la maquina zoo:
+            * m8_script.sh: Ejecuta la versión paralela del codigo y almacena los resultados en una carpeta llamada "resultados_paralelos"
+            * secuencial.sh: Ejecuta la versión secuencial del codigo (la del moodle) y almacena los resultados en una carpeta llamada "resultados_secuenciales"
+-mD8K.c: Archivo en C que contiene el codigo original de la práctica, la versión secuencial
+-parlalelo_mD8K.c: Archivo en C que contiene mi propuesta paralela de la práctica.
+
+Como ejecutar:
+
+1: Conectarse a la maquina zoo --> ssh {$identificador}@zoo.deim...  --> poner contraseña
+2: Desde la maquina local hacer scp {archivos de scripts y los archivos escritos en C} a zoo
+3: Dar permisos de ejecución en zoo a los scripts --> chmod +x m8_script.sh / secuencial.sh 
+4: Ejecutar ./{$script}
+5: Exportar los resultados con scp -r desde la maquina local.
