@@ -1,7 +1,7 @@
 #!/bin/bash
 
-SRC="./version2.c"
-RESULTS_DIR="./resultados_2"
+SRC="./paralelo_mD8K.c"
+RESULTS_DIR="./resultados_paralelos"
 BIN="./md8k_pal2"
 
 echo "Compilando programa..."
