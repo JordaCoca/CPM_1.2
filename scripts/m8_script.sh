@@ -1,8 +1,8 @@
 #!/bin/bash
 
-SRC="./paralelo_2.c"
-RESULTS_DIR="./resultados_paralelos"
-BIN="./md8k_pal2"
+SRC="./paralelo_3.c"
+RESULTS_DIR="./resultados_3"
+BIN="./md8k_pal3"
 
 echo "Compilando programa..."
 gcc -O3 -fopenmp $SRC -o $BIN
@@ -27,7 +27,14 @@ do
         echo "----------------------"
 
         export OMP_NUM_THREADS=$t
-        srun -c 1 -n 1 -p teen time $BIN
+        export OMP_PLACES=cores
+        export OMP_PROC_BIND=spread
+
+        srun -p teen \
+            --nodes=1 \
+            --ntasks=1 \
+            --cpus-per-task=$t \
+            time $BIN
     } &> $RESULTS_DIR/teen_${t}
 done
 
