@@ -5,7 +5,7 @@ RESULTS_DIR="./resultados_paralelos"
 BIN="./md8k_pal2"
 
 echo "Compilando programa..."
-cc -O3 -fopenmp $SRC -o $BIN
+cc -O3 -c 1 -fopenmp $SRC -o $BIN
 
 if [ $? -ne 0 ]; then
     echo "Error en compilacion"
@@ -26,7 +26,7 @@ do
         echo "----------------------"
 
         export OMP_NUM_THREADS=$t
-        srun -p orca time $BIN
+        srun -c 1 -p orca time $BIN
     } &> $RESULTS_DIR/orca_${t}
 done
 
@@ -44,7 +44,7 @@ do
         echo "----------------------"
 
         export OMP_NUM_THREADS=$t
-        srun -p teen time $BIN
+        srun -c 1 -p teen time $BIN
     } &> $RESULTS_DIR/teen_${t}
 done
 
