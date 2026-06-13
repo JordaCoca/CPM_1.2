@@ -44,7 +44,7 @@ tmd * b = (tmd*)pb;
 int main()
 {
     int i,j,k,neleC, index, value;
-    
+    /* 
     printf("omp_get_max_threads(): %d\n", omp_get_max_threads());
     #pragma omp parallel
     {
@@ -56,6 +56,8 @@ int main()
             printf("Thread %d is running on CPU %d\n", tid, cpu);
         }
     }
+    */
+    
     bzero(C,sizeof(int)*(N*N));
     bzero(C1,sizeof(int)*(N*N));
     bzero(C2,sizeof(int)*(N*N));
