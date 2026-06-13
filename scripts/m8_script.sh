@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SRC="./paralelo_3.c"
+SRC="./paralelo_mD8K.c"
 RESULTS_DIR="./resultados_3"
 BIN="./md8k_pal3"
 

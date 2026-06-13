@@ -1,0 +1,18 @@
+Programa: paralelo_mD8K
+Maquina: WSL
+CPU: Intel i7-14700KF
+Threads: 8
+----------------------
+Tiempo bucle1: 0.000265
+Tiempo bucle2: 3.235883
+Tiempo bucle3: 0.000002
+Tiempo bucle4: 0.878279
+Tiempo bucle5: 0.000002
+Tiempo bucle6: 0.744999
+Tiempo bucle7: 0.024229
+Tiempo bucle8: 0.294832
+Elementos C: 35248895
+Suma: 130625108751
+real 5.99
+user 35.27
+sys 0.77
