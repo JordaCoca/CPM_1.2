@@ -1,0 +1,26 @@
+Programa: paralelo2
+Maquina: teen
+Threads: 8
+Run: 
+----------------------
+omp_get_max_threads(): 8
+Num threads: 8
+Thread 7 is running on CPU 7
+Num threads: 8
+Thread 1 is running on CPU 1
+Num threads: 8
+Thread 5 is running on CPU 5
+Num threads: 8
+Thread 0 is running on CPU 0
+Num threads: 8
+Thread 3 is running on CPU 3
+Num threads: 8
+Thread 2 is running on CPU 2
+Num threads: 8
+Thread 6 is running on CPU 6
+Num threads: 8
+Thread 4 is running on CPU 4
+Elementos C: 35248895
+Suma: 130625108751
+17.25user 0.20system 0:02.60elapsed 670%CPU (0avgtext+0avgdata 1688976maxresident)k
+0inputs+0outputs (0major+126954minor)pagefaults 0swaps

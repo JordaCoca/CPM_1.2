@@ -1,0 +1,74 @@
+Programa: paralelo2
+Maquina: orca
+Threads: 32
+Run: 
+----------------------
+omp_get_max_threads(): 32
+Num threads: 32
+Thread 0 is running on CPU 0
+Num threads: 32
+Thread 2 is running on CPU 2
+Num threads: 32
+Thread 1 is running on CPU 1
+Num threads: 32
+Thread 3 is running on CPU 3
+Num threads: 32
+Thread 14 is running on CPU 14
+Num threads: 32
+Thread 15 is running on CPU 15
+Num threads: 32
+Thread 13 is running on CPU 13
+Num threads: 32
+Thread 12 is running on CPU 12
+Num threads: 32
+Thread 10 is running on CPU 10
+Num threads: 32
+Thread 9 is running on CPU 9
+Num threads: 32
+Thread 8 is running on CPU 8
+Num threads: 32
+Thread 11 is running on CPU 11
+Num threads: 32
+Thread 4 is running on CPU 4
+Num threads: 32
+Thread 7 is running on CPU 7
+Num threads: 32
+Thread 5 is running on CPU 5
+Num threads: 32
+Thread 6 is running on CPU 6
+Num threads: 32
+Thread 19 is running on CPU 19
+Num threads: 32
+Thread 18 is running on CPU 18
+Num threads: 32
+Thread 16 is running on CPU 16
+Num threads: 32
+Thread 17 is running on CPU 17
+Num threads: 32
+Thread 31 is running on CPU 31
+Num threads: 32
+Thread 29 is running on CPU 29
+Num threads: 32
+Thread 28 is running on CPU 28
+Num threads: 32
+Thread 30 is running on CPU 30
+Num threads: 32
+Thread 22 is running on CPU 22
+Num threads: 32
+Thread 23 is running on CPU 23
+Num threads: 32
+Thread 20 is running on CPU 20
+Num threads: 32
+Thread 21 is running on CPU 21
+Num threads: 32
+Thread 26 is running on CPU 26
+Num threads: 32
+Thread 24 is running on CPU 24
+Num threads: 32
+Thread 25 is running on CPU 25
+Num threads: 32
+Thread 27 is running on CPU 27
+Elementos C: 35248895
+Suma: 130625108751
+58.54user 0.23system 0:02.73elapsed 2146%CPU (0avgtext+0avgdata 1690936maxresident)k
+0inputs+0outputs (0major+128043minor)pagefaults 0swaps

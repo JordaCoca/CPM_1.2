@@ -1,0 +1,14 @@
+Programa: paralelo2
+Maquina: orca
+Threads: 2
+Run: 
+----------------------
+omp_get_max_threads(): 2
+Num threads: 2
+Thread 0 is running on CPU 0
+Num threads: 2
+Thread 1 is running on CPU 1
+Elementos C: 35248895
+Suma: 130625108751
+49.03user 0.21system 0:24.99elapsed 197%CPU (0avgtext+0avgdata 1690648maxresident)k
+0inputs+0outputs (0major+127277minor)pagefaults 0swaps

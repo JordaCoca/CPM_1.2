@@ -1,9 +1,12 @@
+#define _GNU_SOURCE
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
 #include <strings.h>
 #include <assert.h>
 #include <omp.h>
+#include <sched.h>
+
 
 #define N 8000L
 #define ND N*N/100
@@ -42,10 +45,20 @@ int main()
 {
     int i,j,k,neleC, index, value;
     
+    printf("omp_get_max_threads(): %d\n", omp_get_max_threads());
+    #pragma omp parallel
+    {
+        int tid = omp_get_thread_num();
+        int cpu = sched_getcpu();
+        #pragma omp critical
+        {
+            printf("Num threads: %d\n", omp_get_num_threads());
+            printf("Thread %d is running on CPU %d\n", tid, cpu);
+        }
+    }
     bzero(C,sizeof(int)*(N*N));
     bzero(C1,sizeof(int)*(N*N));
     bzero(C2,sizeof(int)*(N*N));
-    double t_b1=0, t_b2=0, t_b3=0, t_b4=0, t_b5=0, t_b6=0, t_b7=0, t_b8=0;
      
     // No els paralelitzem perque hi ha generacio d'aleatoris
    for(k=0;k<ND;k++)
@@ -81,7 +94,6 @@ int main()
     
     // calcul dels index de les columnes (seq)
     /* ====== BUCLE 1 ====== */
-    double t0 = omp_get_wtime();
     k=0;
     for (j=0; j<N+1; j++)
      {  
@@ -89,28 +101,22 @@ int main()
         jBD[j] = k;
      }
 
-    t_b1 += omp_get_wtime() - t0;
     /* ====== BUCLE 2 ====== */
-    t0 = omp_get_wtime();
     //Matriu dispersa per matriu
     #pragma omp parallel for private(k)
     for(i=0;i<N;i++)
         for (k=0;k<ND;k++)
             C1[AD[k].i][i] += AD[k].v * B[AD[k].j][i];
             
-    t_b2 += omp_get_wtime() - t0;
 
     /* ====== BUCLE 3 ====== */
-    t0 = omp_get_wtime();
     //Matriu dispersa per matriu -> dona matriu Dispersa
     #pragma omp threadprivate(VBcol)
     for (j=0;j<N;j++){
         VBcol[j] = 0;
     }
-    t_b3 += omp_get_wtime() - t0;
 
     /* ====== BUCLE 4   ====== */
-    t0 = omp_get_wtime();
     #pragma omp parallel for copyin(VBcol)
     for(i=0;i<N;i++)
     {
@@ -123,20 +129,16 @@ int main()
         for (j = 0; j < N; j++)
             VBcol[j] = 0;
     }
-    t_b4 += omp_get_wtime() - t0;
 
     //Matriu dispersa per matriu dispersa -> dona matriu Dispersa
     
     neleC=0;
     /* ====== BUCLE 5 ====== */
-    t0 = omp_get_wtime();
     #pragma omp threadprivate(VCcol, VBcol)
     for (j=0;j<N;j++)
         VBcol[j] = VCcol[j] = 0;
-    t_b5 += omp_get_wtime() - t0;
 
     /* ====== BUCLE 6 ====== */
-    t0 = omp_get_wtime();
     #pragma omp parallel for private(k, j) copyin(VCcol, VBcol)
     for(i=0;i<N;i++)
       {
@@ -162,12 +164,10 @@ int main()
             }
         }
       }
-      t_b6 += omp_get_wtime() - t0;
 
     
     /* ====== Bucle 7 ====== */
     // Comprovacio MD x M -> M i MD x MD -> M
-    t0 = omp_get_wtime();
     //#pragma omp parallel for private(j)
     for (i=0;i<N;i++)
         for(j=0;j<N;j++)
@@ -175,10 +175,8 @@ int main()
                 printf("Diferencies C1 i C2 pos %d,%d: %d != %d\n",i,j,C1[i][j],C2[i][j]);
     // Comprovacio MD X MD -> M i MD x MD -> MD
     Suma = 0;
-    t_b7 += omp_get_wtime() - t0;
 
     /* ====== Bucle 8 ====== */
-    t0 = omp_get_wtime();
     //#pragma omp parallel for reduction(+:Suma)
     for(k=0;k<neleC;k++)
      {
@@ -186,16 +184,6 @@ int main()
         if (CD[k].v != C1[CD[k].i][CD[k].j])
             printf("Diferencies C1 i CD a i:%d,j:%d,v%d, k:%d, vd:%d\n",CD[k].i,CD[k].j,C1[CD[k].i][CD[k].j],k,CD[k].v);
      }
-    t_b8 += omp_get_wtime() - t0;
-
-    printf("Tiempo bucle1: %f\n", t_b1);
-    printf("Tiempo bucle2: %f\n", t_b2);
-    printf("Tiempo bucle3: %f\n", t_b3);
-    printf("Tiempo bucle4: %f\n", t_b4);
-    printf("Tiempo bucle5: %f\n", t_b5);
-    printf("Tiempo bucle6: %f\n", t_b6);
-    printf("Tiempo bucle7: %f\n", t_b7);
-    printf("Tiempo bucle8: %f\n", t_b8);
     printf("Elementos C: %d\n", neleC);
     printf("Suma: %lld\n", Suma);
     exit(0);

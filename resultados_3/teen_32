@@ -1,0 +1,7 @@
+Programa: paralelo2
+Maquina: teen
+Threads: 32
+Run: 
+----------------------
+srun: error: CPU count per node can not be satisfied
+srun: error: Unable to allocate resources: Requested node configuration is not available

@@ -1,0 +1,138 @@
+Programa: paralelo2
+Maquina: orca
+Threads: 64
+Run: 
+----------------------
+omp_get_max_threads(): 64
+Num threads: 64
+Thread 0 is running on CPU 0
+Num threads: 64
+Thread 2 is running on CPU 2
+Num threads: 64
+Thread 3 is running on CPU 3
+Num threads: 64
+Thread 1 is running on CPU 1
+Num threads: 64
+Thread 14 is running on CPU 14
+Num threads: 64
+Thread 12 is running on CPU 12
+Num threads: 64
+Thread 13 is running on CPU 13
+Num threads: 64
+Thread 15 is running on CPU 15
+Num threads: 64
+Thread 6 is running on CPU 6
+Num threads: 64
+Thread 7 is running on CPU 7
+Num threads: 64
+Thread 4 is running on CPU 4
+Num threads: 64
+Thread 5 is running on CPU 5
+Num threads: 64
+Thread 11 is running on CPU 11
+Num threads: 64
+Thread 10 is running on CPU 10
+Num threads: 64
+Thread 8 is running on CPU 8
+Num threads: 64
+Thread 9 is running on CPU 9
+Num threads: 64
+Thread 30 is running on CPU 30
+Num threads: 64
+Thread 31 is running on CPU 31
+Num threads: 64
+Thread 28 is running on CPU 28
+Num threads: 64
+Thread 29 is running on CPU 29
+Num threads: 64
+Thread 24 is running on CPU 24
+Num threads: 64
+Thread 27 is running on CPU 27
+Num threads: 64
+Thread 25 is running on CPU 25
+Num threads: 64
+Thread 26 is running on CPU 26
+Num threads: 64
+Thread 18 is running on CPU 18
+Num threads: 64
+Thread 17 is running on CPU 17
+Num threads: 64
+Thread 19 is running on CPU 19
+Num threads: 64
+Thread 16 is running on CPU 16
+Num threads: 64
+Thread 22 is running on CPU 22
+Num threads: 64
+Thread 23 is running on CPU 23
+Num threads: 64
+Thread 21 is running on CPU 21
+Num threads: 64
+Thread 20 is running on CPU 20
+Num threads: 64
+Thread 37 is running on CPU 37
+Num threads: 64
+Thread 39 is running on CPU 39
+Num threads: 64
+Thread 38 is running on CPU 38
+Num threads: 64
+Thread 36 is running on CPU 36
+Num threads: 64
+Thread 32 is running on CPU 32
+Num threads: 64
+Thread 33 is running on CPU 33
+Num threads: 64
+Thread 34 is running on CPU 34
+Num threads: 64
+Thread 35 is running on CPU 35
+Num threads: 64
+Thread 46 is running on CPU 46
+Num threads: 64
+Thread 47 is running on CPU 47
+Num threads: 64
+Thread 44 is running on CPU 44
+Num threads: 64
+Thread 45 is running on CPU 45
+Num threads: 64
+Thread 43 is running on CPU 43
+Num threads: 64
+Thread 42 is running on CPU 42
+Num threads: 64
+Thread 41 is running on CPU 41
+Num threads: 64
+Thread 58 is running on CPU 58
+Num threads: 64
+Thread 57 is running on CPU 57
+Num threads: 64
+Thread 59 is running on CPU 59
+Num threads: 64
+Thread 56 is running on CPU 56
+Num threads: 64
+Thread 40 is running on CPU 40
+Num threads: 64
+Thread 62 is running on CPU 62
+Num threads: 64
+Thread 61 is running on CPU 61
+Num threads: 64
+Thread 63 is running on CPU 63
+Num threads: 64
+Thread 60 is running on CPU 60
+Num threads: 64
+Thread 53 is running on CPU 53
+Num threads: 64
+Thread 54 is running on CPU 54
+Num threads: 64
+Thread 52 is running on CPU 52
+Num threads: 64
+Thread 55 is running on CPU 55
+Num threads: 64
+Thread 48 is running on CPU 48
+Num threads: 64
+Thread 51 is running on CPU 51
+Num threads: 64
+Thread 49 is running on CPU 49
+Num threads: 64
+Thread 50 is running on CPU 50
+Elementos C: 35248895
+Suma: 130625108751
+71.13user 0.33system 0:02.20elapsed 3242%CPU (0avgtext+0avgdata 1693148maxresident)k
+0inputs+0outputs (0major+128611minor)pagefaults 0swaps

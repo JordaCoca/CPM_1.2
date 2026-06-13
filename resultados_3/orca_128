@@ -1,0 +1,261 @@
+omp_get_max_threads(): 128
+Num threads: 128
+Thread 0 is running on CPU 0
+Num threads: 128
+Thread 89 is running on CPU 108
+Num threads: 128
+Thread 93 is running on CPU 110
+Num threads: 128
+Thread 51 is running on CPU 25
+Num threads: 128
+Thread 54 is running on CPU 91
+Num threads: 128
+Thread 49 is running on CPU 88
+Num threads: 128
+Thread 55 is running on CPU 27
+Num threads: 128
+Thread 50 is running on CPU 89
+Num threads: 128
+Thread 52 is running on CPU 26
+Num threads: 128
+Thread 48 is running on CPU 24
+Num threads: 128
+Thread 53 is running on CPU 90
+Num threads: 128
+Thread 126 is running on CPU 127
+Num threads: 128
+Thread 122 is running on CPU 125
+Num threads: 128
+Thread 124 is running on CPU 62
+Num threads: 128
+Thread 120 is running on CPU 60
+Num threads: 128
+Thread 125 is running on CPU 126
+Num threads: 128
+Thread 1 is running on CPU 64
+Num threads: 128
+Thread 7 is running on CPU 3
+Num threads: 128
+Thread 6 is running on CPU 67
+Num threads: 128
+Thread 8 is running on CPU 4
+Num threads: 128
+Thread 11 is running on CPU 5
+Num threads: 128
+Thread 12 is running on CPU 6
+Num threads: 128
+Thread 10 is running on CPU 69
+Num threads: 128
+Thread 9 is running on CPU 68
+Num threads: 128
+Thread 15 is running on CPU 7
+Num threads: 128
+Thread 13 is running on CPU 70
+Num threads: 128
+Thread 14 is running on CPU 71
+Num threads: 128
+Thread 2 is running on CPU 65
+Num threads: 128
+Thread 4 is running on CPU 2
+Num threads: 128
+Thread 3 is running on CPU 1
+Num threads: 128
+Thread 5 is running on CPU 66
+Num threads: 128
+Thread 60 is running on CPU 30
+Num threads: 128
+Thread 62 is running on CPU 95
+Num threads: 128
+Thread 61 is running on CPU 94
+Num threads: 128
+Thread 58 is running on CPU 93
+Num threads: 128
+Thread 63 is running on CPU 31
+Num threads: 128
+Thread 56 is running on CPU 28
+Num threads: 128
+Thread 59 is running on CPU 29
+Num threads: 128
+Thread 57 is running on CPU 92
+Num threads: 128
+Thread 25 is running on CPU 76
+Num threads: 128
+Thread 27 is running on CPU 13
+Num threads: 128
+Thread 24 is running on CPU 12
+Num threads: 128
+Thread 26 is running on CPU 77
+Num threads: 128
+Thread 28 is running on CPU 14
+Num threads: 128
+Thread 31 is running on CPU 15
+Num threads: 128
+Thread 29 is running on CPU 78
+Num threads: 128
+Thread 30 is running on CPU 79
+Num threads: 128
+Thread 17 is running on CPU 72
+Num threads: 128
+Thread 20 is running on CPU 10
+Num threads: 128
+Thread 16 is running on CPU 8
+Num threads: 128
+Thread 18 is running on CPU 73
+Num threads: 128
+Thread 23 is running on CPU 11
+Num threads: 128
+Thread 21 is running on CPU 74
+Num threads: 128
+Thread 22 is running on CPU 75
+Num threads: 128
+Thread 19 is running on CPU 9
+Num threads: 128
+Thread 44 is running on CPU 22
+Num threads: 128
+Thread 47 is running on CPU 23
+Num threads: 128
+Thread 43 is running on CPU 21
+Num threads: 128
+Thread 41 is running on CPU 84
+Num threads: 128
+Thread 42 is running on CPU 85
+Num threads: 128
+Thread 46 is running on CPU 87
+Num threads: 128
+Thread 45 is running on CPU 86
+Num threads: 128
+Thread 40 is running on CPU 20
+Num threads: 128
+Thread 38 is running on CPU 83
+Num threads: 128
+Thread 37 is running on CPU 82
+Num threads: 128
+Thread 34 is running on CPU 81
+Num threads: 128
+Thread 36 is running on CPU 18
+Num threads: 128
+Thread 32 is running on CPU 16
+Num threads: 128
+Thread 35 is running on CPU 17
+Num threads: 128
+Thread 33 is running on CPU 80
+Num threads: 128
+Thread 39 is running on CPU 19
+Num threads: 128
+Thread 127 is running on CPU 63
+Num threads: 128
+Thread 121 is running on CPU 124
+Num threads: 128
+Thread 123 is running on CPU 61
+Num threads: 128
+Thread 83 is running on CPU 41
+Num threads: 128
+Thread 87 is running on CPU 43
+Num threads: 128
+Thread 81 is running on CPU 104
+Num threads: 128
+Thread 85 is running on CPU 106
+Num threads: 128
+Thread 86 is running on CPU 107
+Num threads: 128
+Thread 80 is running on CPU 40
+Num threads: 128
+Thread 84 is running on CPU 42
+Num threads: 128
+Thread 82 is running on CPU 105
+Num threads: 128
+Thread 77 is running on CPU 102
+Num threads: 128
+Thread 79 is running on CPU 39
+Num threads: 128
+Thread 72 is running on CPU 36
+Num threads: 128
+Thread 76 is running on CPU 38
+Num threads: 128
+Thread 73 is running on CPU 100
+Num threads: 128
+Thread 75 is running on CPU 37
+Num threads: 128
+Thread 78 is running on CPU 103
+Num threads: 128
+Thread 74 is running on CPU 101
+Num threads: 128
+Thread 94 is running on CPU 111
+Num threads: 128
+Thread 90 is running on CPU 109
+Num threads: 128
+Thread 95 is running on CPU 47
+Num threads: 128
+Thread 88 is running on CPU 44
+Num threads: 128
+Thread 91 is running on CPU 45
+Num threads: 128
+Thread 92 is running on CPU 46
+Num threads: 128
+Thread 65 is running on CPU 96
+Num threads: 128
+Thread 71 is running on CPU 35
+Num threads: 128
+Thread 68 is running on CPU 34
+Num threads: 128
+Thread 66 is running on CPU 97
+Num threads: 128
+Thread 70 is running on CPU 99
+Num threads: 128
+Thread 64 is running on CPU 32
+Num threads: 128
+Thread 69 is running on CPU 98
+Num threads: 128
+Thread 67 is running on CPU 33
+Num threads: 128
+Thread 109 is running on CPU 118
+Num threads: 128
+Thread 111 is running on CPU 55
+Num threads: 128
+Thread 106 is running on CPU 117
+Num threads: 128
+Thread 110 is running on CPU 119
+Num threads: 128
+Thread 104 is running on CPU 52
+Num threads: 128
+Thread 108 is running on CPU 54
+Num threads: 128
+Thread 105 is running on CPU 116
+Num threads: 128
+Thread 107 is running on CPU 53
+Num threads: 128
+Thread 119 is running on CPU 59
+Num threads: 128
+Thread 113 is running on CPU 120
+Num threads: 128
+Thread 117 is running on CPU 122
+Num threads: 128
+Thread 118 is running on CPU 123
+Num threads: 128
+Thread 116 is running on CPU 58
+Num threads: 128
+Thread 112 is running on CPU 56
+Num threads: 128
+Thread 115 is running on CPU 57
+Num threads: 128
+Thread 114 is running on CPU 121
+Num threads: 128
+Thread 100 is running on CPU 50
+Num threads: 128
+Thread 103 is running on CPU 51
+Num threads: 128
+Thread 99 is running on CPU 49
+Num threads: 128
+Thread 101 is running on CPU 114
+Num threads: 128
+Thread 98 is running on CPU 113
+Num threads: 128
+Thread 102 is running on CPU 115
+Num threads: 128
+Thread 97 is running on CPU 112
+Num threads: 128
+Thread 96 is running on CPU 48
+Elementos C: 35248895
+Suma: 130625108751
+175.42user 1.29system 0:03.33elapsed 5307%CPU (0avgtext+0avgdata 1734052maxresident)k
+0inputs+0outputs (0major+129212minor)pagefaults 0swaps
