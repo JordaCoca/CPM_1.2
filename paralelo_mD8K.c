@@ -170,7 +170,6 @@ int main()
     
     /* ====== Bucle 7 ====== */
     // Comprovacio MD x M -> M i MD x MD -> M
-    //#pragma omp parallel for private(j)
     for (i=0;i<N;i++)
         for(j=0;j<N;j++)
             if (C2[i][j] != C1[i][j])
@@ -179,7 +178,6 @@ int main()
     Suma = 0;
 
     /* ====== Bucle 8 ====== */
-    //#pragma omp parallel for reduction(+:Suma)
     for(k=0;k<neleC;k++)
      {
         Suma += CD[k].v;
